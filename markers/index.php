@@ -22,7 +22,7 @@ if (!isset($_GET["id"])) {
 } else {
   // Check if marker exists
   $stmt = $con->prepare("SELECT * FROM " . $settings["db"]["tables"]["markers"] . " WHERE id = ?");
-  $stmt->bind_param("i", $_GET["id"]);
+  $stmt->bind_param("s", $_GET["id"]);
   $stmt->execute();
   $result = $stmt->get_result();
   $markers = $result->fetch_all(MYSQLI_ASSOC);
